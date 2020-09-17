@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +10,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { SignUpComponent } from './shared/sign-up/sign-up.component';
 import { SignInModalComponent } from './shared/sign-in-modal/sign-in-modal.component';
+import { BookingModule } from './booking/booking.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { SignInModalComponent } from './shared/sign-in-modal/sign-in-modal.compo
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BookingModule
     ],
   providers: [],
   bootstrap: [AppComponent]
