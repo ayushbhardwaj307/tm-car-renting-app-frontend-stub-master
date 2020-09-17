@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  selector: 'app-sign-in-modal',
+  templateUrl: './sign-in-modal.component.html',
+  styleUrls: ['./sign-in-modal.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInModalComponent implements OnInit {
 
+  submitted = false;
   signInForm: FormGroup;
   email: FormControl;
   password: FormControl;
@@ -18,13 +19,14 @@ export class SignInComponent implements OnInit {
   mobileNumber: FormControl;
   password1: FormControl;
   password2: FormControl;
-  showModal: boolean;
 
-
+  isForgotPasswordModalOpened = false;
+  isSignIn = true;
   constructor(private formBuilder: FormBuilder) { }
   ngOnInit() {
     this.email = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]);
     this.password = new FormControl('' , [Validators.required]);
+
     this.signInForm = this.formBuilder.group({
       password: this.password,
       email: this.email
@@ -43,5 +45,19 @@ export class SignInComponent implements OnInit {
       password1: this.password1,
       password2: this.password2
     });
+  }
+
+  submitForm() {
+    if (this.signInForm.valid) {
+      this.submitted = true;
+    }
+  }
+
+  toggleSignIn(value: boolean) {
+    this.isSignIn = value;
+  }
+
+  ForgotPasswordModalOpened(value: boolean){
+    this.isForgotPasswordModalOpened = value;
   }
 }

@@ -1,0 +1,42 @@
+<form class="user-form" [formGroup]="signUpForm">
+  <div>
+    <div>
+      <label for="firstName" class="color">First Name:</label>
+      <input type="text" [formControl]="firstName" name="firstName" class="form-input" id="firstName">
+      <span class="error" *ngIf="(firstName.dirty || firstName.touched) && firstName.errors?.required">First Name is required</span>
+    </div>
+    <div>
+      <label for="lastName" class="color">Last Name:</label>
+      <input  type="text" name="lastName" class="form-input" id="lastName">
+    </div>
+    <div>
+      <label for="email1" class="color">Email Id:</label>
+      <input type="email1" [formControl]="email1" name="email1" class="form-input" id="email1">
+      <span class="error" *ngIf="(email1.dirty || email1.touched) && email1.errors?.required">Email Id is required</span>
+      <span class="error" *ngIf="(email1.dirty || email1.touched) && email1.errors?.pattern">Enter a valid email address</span>
+    </div>
+    <div>
+      <label for="mobileNumber" class="color">Mobile Number:</label>
+      <input [formControl]="mobileNumber" type="text" name="mobileNumber" class="form-input" id="mobileNumber">
+      <span class="error" *ngIf="(mobileNumber.dirty || mobileNumber.touched) && mobileNumber.errors?.required">Mobile number is required</span>
+      <span class="error" *ngIf="(mobileNumber.dirty || mobileNumber.touched) && mobileNumber.errors?.pattern">Mobile number must have 10 digits only and cannot start with0</span>
+    </div>
+    <div>
+      <label for="password1" class="color">Password:</label>
+      <input [formControl]="password1" type="password" name="password1" class="form-input" id="password1">
+      <span class="error" *ngIf="(password1.dirty || password1.touched) && password1.errors?.required">Password is required</span>
+      <span class="error" *ngIf="(password1.dirty || password1.touched) && password1.errors?.pattern">Password should have minimum 5 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number”</span>
+    </div>
+    <div>
+      <label for="password2" class="color">Confirm Password:</label>
+      <input [formControl]="password2" type="password" name="password2" class="form-input" id="password2">
+      <span class="error" *ngIf="(password2.dirty || password2.touched) && password2.errors?.required">Confirm password is required.</span>
+      <span class="error" *ngIf="(password2.dirty || password2.touched) && password2.errors?.pattern">Password should have minimum 5 characters, at least 1 uppercase letter, 1 lowercase
+                                  letter and 1 number.”</span>
+      <span class="error" *ngIf="password2.valid && password2.value != password1.value">Password and Confirm Password must be match</span>
+    </div>
+    <div class="btnCenter">
+      <button type="submit" (click)="submitForm2()" class="btn btn-submit btnWidth" [disabled]="!signUpForm.valid || password2.value != password1.value"> Sign Up </button>
+    </div>
+  </div>
+</form>

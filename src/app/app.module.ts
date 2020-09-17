@@ -8,6 +8,9 @@ import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import { SignInComponent } from './shared/sign-in/sign-in.component';
 import { HomeComponent } from './home/home/home.component';
 import { FooterComponent } from './core/footer/footer.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { SignUpComponent } from './shared/sign-up/sign-up.component';
+import { SignInModalComponent } from './shared/sign-in-modal/sign-in-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +18,16 @@ import { FooterComponent } from './core/footer/footer.component';
     NavBarComponent,
     SignInComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    SignUpComponent,
+    SignInModalComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

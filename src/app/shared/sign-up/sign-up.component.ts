@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class SignInComponent implements OnInit {
-
+export class SignUpComponent implements OnInit {
   signInForm: FormGroup;
   email: FormControl;
   password: FormControl;
+  submitted1 = false;
   signUpForm: FormGroup;
   form: FormControl;
   firstName: FormControl;
@@ -18,13 +18,11 @@ export class SignInComponent implements OnInit {
   mobileNumber: FormControl;
   password1: FormControl;
   password2: FormControl;
-  showModal: boolean;
-
-
   constructor(private formBuilder: FormBuilder) { }
   ngOnInit() {
     this.email = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]);
     this.password = new FormControl('' , [Validators.required]);
+
     this.signInForm = this.formBuilder.group({
       password: this.password,
       email: this.email
@@ -43,5 +41,11 @@ export class SignInComponent implements OnInit {
       password1: this.password1,
       password2: this.password2
     });
+  }
+
+  submitForm2(){
+    if (this.signUpForm.valid) {
+      this.submitted1 = true;
+    }
   }
 }

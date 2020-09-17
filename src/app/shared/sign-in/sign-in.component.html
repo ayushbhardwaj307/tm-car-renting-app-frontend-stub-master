@@ -1,1 +1,18 @@
-<button class="btn">Sign In</button>
+<button type="button" class="btn" data-toggle="modal" (click)="showModal=true" id="sign-in-button">
+  Sign In
+</button>
+<div id="modals">
+  <div class="modal" id="registerModal" role="dialog" [ngClass] = "{'show': showModal}">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" (click)="showModal=false">&times;</span>
+          </button>
+        </div>
+        <app-sign-in-modal></app-sign-in-modal>
+      </div>
+    </div>
+  </div>
+</div>
+
